@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logoecho.png";
 import { toast, ToastContainer } from "react-toastify";
@@ -9,12 +9,19 @@ import { registerRoute } from "../../utils/APIRoutes";
 function Register() {
   const navigate = useNavigate();
   const toastOptions = {
-    position: "top-right",
+    position: "bottom-right",
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
     // theme: "dark",
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  }, []);
+
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -77,8 +84,8 @@ function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-green-50">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-2xl">
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-50 to-green-50">
+      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-xl border border-gray-200">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="text-center">
             <img
@@ -103,7 +110,7 @@ function Register() {
               placeholder="Enter your username"
               name="username"
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 shadow-sm"
             />
           </div>
 
@@ -116,7 +123,7 @@ function Register() {
               placeholder="Enter your email"
               name="email"
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 shadow-sm"
             />
           </div>
 
@@ -129,7 +136,7 @@ function Register() {
               placeholder="Enter your password"
               name="password"
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 shadow-sm"
             />
           </div>
 
@@ -142,7 +149,7 @@ function Register() {
               placeholder="Confirm your password"
               name="confirmPassword"
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 shadow-sm"
             />
           </div>
 

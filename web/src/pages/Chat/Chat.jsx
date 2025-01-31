@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Chat() {
-  return <div>Chat</div>;
+  // 2:02:0
+  return (
+    <>
+      <div>
+        <div></div>
+      </div>
+    </>
+  );
 }
 
 export default Chat;

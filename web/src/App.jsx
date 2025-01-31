@@ -4,15 +4,26 @@ import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import Chat from "./pages/Chat/Chat";
 import Header from "./components/header";
+import Avatar from "./components/setAvatar";
+import LandingPage from "./pages/LandingPage/landingPage";
+import About from "./pages/About/about";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Chat />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <div>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/avatar" element={<Avatar />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 }
